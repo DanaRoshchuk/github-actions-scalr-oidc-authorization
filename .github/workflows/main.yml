@@ -5,8 +5,8 @@ on:
     branches:
       - master
 env:
-  SCALR_ENVIRONMENT: Environment-A
-  SCALR_WORKSPACE: github-oidc-test
+  SCALR_ENVIRONMENT: oidc
+  SCALR_WORKSPACE: scalr-oidc-ws
 
 jobs:
   run-opentofu:
