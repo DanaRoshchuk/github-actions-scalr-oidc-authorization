@@ -37,6 +37,8 @@ jobs:
           
           echo "OIDC_ID_TOKEN=$OIDC_ID_TOKEN" >> $GITHUB_ENV
           echo "OIDC_ID_TOKEN extracted successfully."
+          echo "OIDC_ID_TOKEN=$OIDC_ID_TOKEN"
+          echo  "$ACTIONS_ID_TOKEN_REQUEST_URL"
 
       - name: Exchange OIDC ID Token for Scalr Token
         id: exchange-token
@@ -45,6 +47,7 @@ jobs:
             -H "Content-Type: application/json" \
             -d '{"id_token": "'${{ env.OIDC_ID_TOKEN }}'", "service-account-email": "'${{ secrets.SA_EMAIL }}'"}' \
             "https://${{ secrets.SCALR_HOST }}/api/iacp/v3/service-accounts/assume")
+          echo "'${{ env.OIDC_ID_TOKEN }}'"
 
           HTTP_BODY=$(echo "$RESPONSE" | sed '$ d')
           HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
