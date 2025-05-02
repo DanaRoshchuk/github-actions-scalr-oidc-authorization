@@ -1,7 +1,7 @@
 variable "sleep_time" {
   description = "Duration to sleep (e.g., 60s, 1m)"
   type        = string
-  default     = "3s"
+  default     = "1s"
 }
 
 resource "time_sleep" "wait" {
